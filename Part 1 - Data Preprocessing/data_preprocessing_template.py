@@ -25,3 +25,20 @@ imputer = Imputer(missing_values=np.nan, strategy="mean", axis=0)
 imputer = imputer.fit(X[:, 1:3]) # upper bound (3) is not included
 X[:, 1:3] = imputer.transform(X[:, 1:3])
 # print(X)
+
+# Encoding categorical data
+# Encoding is the process of converting data into a format required for a number of information processing needs
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+labelencoder_X = LabelEncoder()
+X[:, 0] = labelencoder_X.fit_transform(X[:, 0])
+# print(X)
+
+# Need to prevent the ML equations from assigning significance to the encoded countries, which are categorical variables; use dummy variables; use OneHotEncoder
+onehotencoder = OneHotEncoder(categorical_features = [0])
+X = onehotencoder.fit_transform(X).toarray()
+# print(X)
+
+# Now do the same for y
+labelencoder_y = LabelEncoder()
+y = labelencoder_y.fit_transform(y)
+print(y)

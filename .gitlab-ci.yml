@@ -1,0 +1,6 @@
+image: continuumio/anaconda3 
+
+build:
+  script:
+    - chmod +x run_ci
+    - source run_ci

@@ -1,0 +1,8 @@
+name: machine-learning-a-z
+
+dependencies:
+  - python=3.6.8
+  - numpy
+  - matplotlib
+  - pandas
+  - scikit-learn

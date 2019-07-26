@@ -2,6 +2,6 @@ image: continuumio/anaconda
 
 build:
   script:
-    - export PATH=$PATH:$HOME/anaconda/bin
+    - export PATH=$PATH:/opt/conda/bin/
     - chmod +x run_ci
     - source run_ci

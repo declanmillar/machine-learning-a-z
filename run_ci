@@ -6,8 +6,7 @@ set -e ; set -u
 
 ENVFILE='environment.yml'
 
-
-function process_notebook(){
+function process_notebook() {
     local path="$1"
 
     local filename="${path##*/}"
@@ -17,7 +16,7 @@ function process_notebook(){
     local envname='machine-learning-a-z'
     RED='\033[0;31m'
     GREEN='\033[0;32m'
-    NC='\033[0m' # No Color    
+    NC='\033[0m' # No Color
 
     # for location in "$folder/../../.." "$folder/../.." "$folder/.." "$folder" ; do
     #     [[ -f "$location/$ENVFILE" ]] && envfile=$location/$ENVFILE && envname=$(stat "%i" $location/$ENVFILE)
@@ -39,9 +38,8 @@ function process_notebook(){
     printf "${GREEN}====> PASSED:${NC} $path\n"
 }
 
-function convert_notebook() {
-    (
-     # conda activate
+function convert_notebook() {(
+    # conda activate
     set +u
     source activate $1
     set -u
@@ -50,8 +48,7 @@ function convert_notebook() {
     --ExecutePreprocessor.timeout=60 \
     --output output.ipynb \
     "$2" || {  printf "${RED}====> FAILED:${NC} $2\n" ; exit 99 ; }
-    )
-}
+)}
 
 if [ $# -eq 1 ]; then
     process_notebook "$1"

@@ -3,5 +3,6 @@ image: continuumio/anaconda3
 build:
   script:
     - export PATH=$PATH:/opt/conda/bin/
+    - conda install -c conda-forge keras
     - chmod +x run_ci
     - source run_ci
